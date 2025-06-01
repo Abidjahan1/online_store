@@ -1,0 +1,66 @@
+<html>
+    <head>
+    <style>
+table, th, td {
+width: 700px;
+  border: 2px solid black;
+  border-collapse:collapse;
+  text-align: center;
+
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+</head>
+<body>
+    
+{% if name %}
+<h1>Hello {{name}}</h1>
+{% else %}
+<h1>Hello World</h1>
+
+{% endif %}
+<table class="center">
+     <!-- <tr>
+    <th>Name</th>
+    <th>Inventory</th>
+    <th>Price</th>
+  </tr>
+    {% for product in products %}
+    <tr>
+    <td>{{product.id}}</td>
+    <td>{{product.customer.first_name}}</td>
+     <td>{{product.orderitem_set__product.title}}</td>
+  </tr>
+     {% endfor %}
+    <!-- {% for product in products %}
+    <li> Name: {{product.title}},  inventory: {{product.inventory}},  price{{product.price}} nn </li>
+    {% endfor %} -->
+
+    <p style="text-align: center;">showing order items with customer names and product titles</p>
+    <table class="center">
+  <tr>
+    <th>Order ID</th>
+    <th>Customer</th>
+    <th>Items (Product × Quantity)</th>
+  </tr>
+
+  {% for order in orders %}
+  <tr>
+    <td>{{ order.id }}</td>
+    <td>{{ order.customer.first_name }} {{ order.customer.last_name }}</td>
+    <td>
+      <ul>
+        {% for item in order.orderitem_set.all %}
+          <li>{{ item.product.title }} <b> PRICE:{{ item.product.price }}</b> × {{ item.quantity }} </li>
+        {% endfor %}
+      </ul>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+
+</html>
