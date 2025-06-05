@@ -29,4 +29,8 @@ python manage.py makemigrations store --empty => creating empty migration to run
 https://www.mockaroo.com/ => for generate dummy data for the sql database ,this is the web address
 
 
+admin related commands
+
+python manage.py createsuperuser => create super user for admin panel
+python manage.py changepassword admin => change the password of the super user
 """
